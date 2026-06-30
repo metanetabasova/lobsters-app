@@ -47,10 +47,9 @@ class Post(Base):
     created_utc = Column(Float, nullable=False)
     fetched_at = Column(DateTime, nullable=False)
 
-    
+
     def __repr__(self):
-        # TODO: return f"<Post id={self.id} title={self.title[:30]!r} score={self.score}>"
-        pass
+       return f"<Post id={self.id} title={self.title[:30]!r} score={self.score}>"
 
     def to_dict(self) -> dict:
         """
