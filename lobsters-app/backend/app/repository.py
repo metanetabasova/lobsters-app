@@ -23,26 +23,17 @@ from app.db import get_session
 def get_top_posts(limit: int = 10) -> list:
     """
     Fetches the top N posts ordered by score, highest first.
-
-    Args:
-        limit (int): How many posts to return. Default 10.
-
-    Returns:
-        list[Post]: A list of Post ORM objects, ordered by score descending.
-
-    TODO:
-        - Get a session: session = get_session()
-        - Query posts ordered by score descending, limited to `limit`:
-              posts = (
-                  session.query(Post)
-                  .order_by(Post.score.desc())
-                  .limit(limit)
-                  .all()
-              )
-        - Close the session: session.close()
-        - Return posts
+    ... (mentorun bütün docstring şərhləri olduğu kimi qalır)
     """
-    pass  # Remove this line when you implement the function
+    session = get_session()
+    posts = (
+        session.query(Post)
+        .order_by(Post.score.desc())
+        .limit(limit)
+        .all()
+    )
+    session.close()
+    return posts
 
 
 def get_post_by_id(post_id: str):
