@@ -34,22 +34,13 @@ def get_top_posts_for_api(limit: int = 10) -> dict:
 def get_single_post_for_api(post_id: str) -> dict:
     """
     Gets one post by id and formats it for the API response.
-
-    Args:
-        post_id (str): The Lobsters post_id to look up.
-
-    Returns:
-        dict: On success: {"success": True, "data": post_dict}
-              On failure: {"success": False, "error": "Post not found."}
-
-    TODO:
-        - Call repository.get_post_by_id(post_id)
-        - If the result is None:
-              return {"success": False, "error": "Post not found."}
-        - Otherwise:
-              return {"success": True, "data": post.to_dict()}
+    ...
     """
-    pass  # Remove this line when you implement the function
+    post = repository.get_post_by_id(post_id)
+    if post is None:
+        return {"success": False, "error": "Post not found."}
+    
+    return {"success": True, "data": post.to_dict()}
 
 
 def get_stats_for_api() -> dict:
