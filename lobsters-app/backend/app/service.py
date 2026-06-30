@@ -46,12 +46,7 @@ def get_single_post_for_api(post_id: str) -> dict:
 def get_stats_for_api() -> dict:
     """
     Gets simple stats about the dataset for a health/stats endpoint.
-
-    Returns:
-        dict: {"success": True, "data": {"total_posts": int}}
-
-    TODO:
-        - Call repository.count_posts()
-        - Return {"success": True, "data": {"total_posts": count}}
+    ...
     """
-    pass  # Remove this line when you implement the function
+    count = repository.count_posts()
+    return {"success": True, "data": {"total_posts": count}}
