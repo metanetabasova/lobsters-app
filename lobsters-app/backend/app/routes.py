@@ -27,22 +27,11 @@ CORS(app)  # Allows the frontend (running on a different port) to call this API
 def get_top_posts():
     """
     GET /api/posts/top?limit=10
-
-    Returns the top N posts ordered by score, descending.
-    Query parameter `limit` is optional, defaults to 10.
-
-    Expected JSON response:
-        { "success": true, "data": [...], "count": 10 }
-
-    TODO:
-        - Read the `limit` query parameter:
-              limit = request.args.get("limit", default=10, type=int)
-        - Call service.get_top_posts_for_api(limit)
-        - Return it as JSON: return jsonify(result)
-          (Flask's jsonify automatically sets the right content type
-          and status code 200 for a successful dict response)
+    ...
     """
-    pass  # Remove this line when you implement the function
+    limit = request.args.get("limit", default=10, type=int)
+    result = service.get_top_posts_for_api(limit)
+    return jsonify(result)
 
 
 @app.route("/api/posts/<string:post_id>", methods=["GET"])
