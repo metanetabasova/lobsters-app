@@ -23,7 +23,7 @@ from app.db import get_session
 def get_top_posts(limit: int = 10) -> list:
     """
     Fetches the top N posts ordered by score, highest first.
-    ... (mentorun bütün docstring şərhləri olduğu kimi qalır)
+    ... 
     """
     session = get_session()
     posts = (
@@ -39,7 +39,7 @@ def get_top_posts(limit: int = 10) -> list:
 def get_post_by_id(post_id: str):
     """
     Fetches a single post by its Lobsters post_id.
-    ... (mentorun bütün docstring şərhləri olduğu kimi qalır)
+    ... 
     """
     session = get_session()
     post = session.query(Post).filter_by(post_id=post_id).first()
@@ -50,15 +50,9 @@ def get_post_by_id(post_id: str):
 def count_posts() -> int:
     """
     Returns the total number of posts currently stored in the database.
-    Useful for a health-check or stats endpoint.
-
-    Returns:
-        int: Total row count in the posts table.
-
-    TODO:
-        - Get a session: session = get_session()
-        - Count rows: count = session.query(Post).count()
-        - Close the session: session.close()
-        - Return count
+    ...
     """
-    pass  # Remove this line when you implement the function
+    session = get_session()
+    count = session.query(Post).count()
+    session.close()
+    return count
