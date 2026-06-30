@@ -38,22 +38,13 @@ def get_top_posts():
 def get_post(post_id):
     """
     GET /api/posts/<post_id>
-
-    Returns a single post by its Lobsters post_id.
-
-    Expected JSON response on success (200):
-        { "success": true, "data": {...} }
-    Expected JSON response on failure (404):
-        { "success": false, "error": "Post not found." }
-
-    TODO:
-        - Call service.get_single_post_for_api(post_id)
-        - If result["success"] is False:
-              return jsonify(result), 404
-        - Otherwise:
-              return jsonify(result), 200
+    ...
     """
-    pass  # Remove this line when you implement the function
+    result = service.get_single_post_for_api(post_id)
+    if result["success"] is False:
+        return jsonify(result), 404
+    else:
+        return jsonify(result), 200
 
 
 @app.route("/api/stats", methods=["GET"])
