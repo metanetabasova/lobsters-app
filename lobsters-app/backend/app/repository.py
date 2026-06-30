@@ -39,20 +39,12 @@ def get_top_posts(limit: int = 10) -> list:
 def get_post_by_id(post_id: str):
     """
     Fetches a single post by its Lobsters post_id.
-
-    Args:
-        post_id (str): The Lobsters post_id, e.g. "1abcde"
-
-    Returns:
-        Post | None: The matching Post object, or None if not found.
-
-    TODO:
-        - Get a session: session = get_session()
-        - Query for the post: post = session.query(Post).filter_by(post_id=post_id).first()
-        - Close the session: session.close()
-        - Return post
+    ... (mentorun bütün docstring şərhləri olduğu kimi qalır)
     """
-    pass  # Remove this line when you implement the function
+    session = get_session()
+    post = session.query(Post).filter_by(post_id=post_id).first()
+    session.close()
+    return post
 
 
 def count_posts() -> int:
