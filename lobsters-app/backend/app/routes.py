@@ -51,18 +51,10 @@ def get_post(post_id):
 def get_stats():
     """
     GET /api/stats
-
-    Returns simple stats about the stored data — useful to confirm
-    the pipeline has actually run and data exists.
-
-    Expected JSON response:
-        { "success": true, "data": { "total_posts": 10 } }
-
-    TODO:
-        - Call service.get_stats_for_api()
-        - Return it as JSON: return jsonify(result)
+    ...
     """
-    pass  # Remove this line when you implement the function
+    result = service.get_stats_for_api()
+    return jsonify(result)
 
 
 @app.route("/api/health", methods=["GET"])
