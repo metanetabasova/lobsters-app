@@ -52,30 +52,15 @@ class Post(Base):
        return f"<Post id={self.id} title={self.title[:30]!r} score={self.score}>"
 
     def to_dict(self) -> dict:
-        """
-        Converts this Post row into a plain dict — useful for turning
-        SQLAlchemy objects into JSON later in the API layer.
-
-        Returns:
-            dict: All fields as plain Python types.
-
-        TODO:
-            Return a dict with these keys, pulling values from self:
-                {
-                    "id": self.id,
-                    "post_id": self.post_id,
-                    "title": self.title,
-                    "author": self.author,
-                    "score": self.score,
-                    "num_comments": self.num_comments,
-                    "url": self.url,
-                    "permalink": self.permalink,
-                    "created_utc": self.created_utc,
-                    "fetched_at": self.fetched_at.isoformat() if self.fetched_at else None,
-                }
-
-            Note: fetched_at is a datetime object — JSON can't serialize
-            datetimes directly, so we convert it to a string with
-            .isoformat() (or None if it's missing).
-        """
-        pass  # Remove this line when you implement the function
+        return {
+            "id": self.id,
+            "post_id": self.post_id,
+            "title": self.title,
+            "author": self.author,
+            "score": self.score,
+            "num_comments": self.num_comments,
+            "url": self.url,
+            "permalink": self.permalink,
+            "created_utc": self.created_utc,
+            "fetched_at": self.fetched_at.isoformat() if self.fetched_at else None,
+        }
