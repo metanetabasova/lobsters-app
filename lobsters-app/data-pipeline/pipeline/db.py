@@ -39,3 +39,16 @@ def init_db():
         - Call Base.metadata.create_all(bind=engine)
     """
     Base.metadata.create_all(bind=engine)
+def get_session():
+    """
+    Returns a new SQLAlchemy session for talking to the database.
+    Caller is responsible for closing it (or use it in a `with` block
+    if you upgrade to that pattern later).
+
+    Returns:
+        Session: A new SQLAlchemy session instance.
+
+    TODO:
+        - Return SessionLocal()
+    """
+    return SessionLocal()
