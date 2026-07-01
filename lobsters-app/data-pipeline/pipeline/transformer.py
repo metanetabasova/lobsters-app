@@ -83,3 +83,32 @@ def transform_post(raw_post_data: dict) -> dict:
     
     
     }
+
+
+def transform_posts(raw_json: list, limit: int = 10) -> list:
+    """
+    Transforms the FULL raw Lobsters response into a list of clean dicts.
+
+    Args:
+        raw_json (list): The full raw list returned by
+                          fetcher.fetch_top_posts_raw() — Lobsters
+                          returns a flat JSON array of story dicts
+                          (no nested wrapper object).
+        limit (int): How many posts to keep, taking the FIRST limit
+                     stories from the list (Lobsters' hottest.json is
+                     already ordered by their ranking algorithm, so the
+                     first N stories are the top N).
+
+    Returns:
+        list[dict]: A list of transformed post dicts (see transform_post
+                     above). Returns an empty list if raw_json is empty.
+
+    TODO:
+        - Take the first limit items from raw_json: raw_json[:limit]
+        - For each item in that slice, call transform_post(item)
+        - Collect the results into a list and return it.
+
+        HINT: A list comprehension works well here:
+            return [transform_post(post) for post in raw_json[:limit]]
+    """
+    return [transform_post(post) for post in raw_json[:limit]]
