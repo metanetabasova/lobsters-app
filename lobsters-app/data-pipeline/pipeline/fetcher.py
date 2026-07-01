@@ -86,4 +86,5 @@ def fetch_top_posts_raw(limit: int = 10) -> list:
         You don't need to unpack anything here — that's Layer 2's job.
         Just return the whole raw list.
     """
-    pass  # Remove this line when you implement the function
+    headers = {"User-Agent": USER_AGENT}
+    response = requests.get(LOBSTERS_HOTTEST_URL, headers=headers, timeout=10)
