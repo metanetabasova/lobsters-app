@@ -67,4 +67,4 @@ class Post(Base):
     def __repr__(self):
         # TODO: return something like:
         # f"<Post id={self.id} title={self.title[:30]!r} score={self.score}>"
-        pass
+        return f"<Post id={self.id} title={self.title[:30]!r} score={self.score}>"
