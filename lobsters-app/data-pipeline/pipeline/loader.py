@@ -68,4 +68,4 @@ def load_posts(posts: list) -> dict:
         5. Close the session: session.close()
         6. Return {"inserted": inserted, "updated": updated, "total": len(posts)}
     """
-    pass  # Remove this line when you implement the function
+    session = get_session()
