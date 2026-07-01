@@ -88,3 +88,5 @@ def fetch_top_posts_raw(limit: int = 10) -> list:
     """
     headers = {"User-Agent": USER_AGENT}
     response = requests.get(LOBSTERS_HOTTEST_URL, headers=headers, timeout=10)
+    response.raise_for_status()
+    return response.json()
