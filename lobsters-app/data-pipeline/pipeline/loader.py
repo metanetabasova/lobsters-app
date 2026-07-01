@@ -92,3 +92,7 @@ def load_posts(posts: list) -> dict:
             )
             session.add(new_post)
             inserted += 1
+
+    session.commit()
+    session.close()
+    return {"inserted": inserted, "updated": updated, "total": len(posts)}
