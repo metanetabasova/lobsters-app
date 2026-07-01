@@ -21,7 +21,7 @@ Why a separate layer for this?
 ============================================================
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def transform_post(raw_post_data: dict) -> dict:
@@ -75,7 +75,7 @@ def transform_post(raw_post_data: dict) -> dict:
       "title": raw_post_data["title"],
       "author": raw_post_data["submitter_user"],
       "score": raw_post_data["score"],
-      "num_comments": raw_post_data["comment_count"]["username"],
+      "num_comments": raw_post_data["comment_count"],
       "url": raw_post_data["url"],
       "permalink": raw_post_data["comments_url"],
       "created_utc": created_utc,
